@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /html5-games/
+Disallow: /vmlinux/
+Disallow: /ebutuoy/
+
+Sitemap: https://whitespider.gq/sitemap.txt

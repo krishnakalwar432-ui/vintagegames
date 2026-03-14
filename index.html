@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<!--
+⁠$$\      $$\ $$\       $$\   $$\                $$$$$$\            $$\       $$\                                             
+⁠$$ | $\  $$ |$$ |      \__|  $$ |              $$  __$$\           \__|      $$ |                                            
+⁠$$ |$$$\ $$ |$$$$$$$\  $$\ $$$$$$\    $$$$$$\  $$ /  \__| $$$$$$\  $$\  $$$$$$$ | $$$$$$\   $$$$$$\       $$$$$$\   $$$$$$\  
+⁠$$ $$ $$\$$ |$$  __$$\ $$ |\_$$  _|  $$  __$$\ \$$$$$$\  $$  __$$\ $$ |$$  __$$ |$$  __$$\ $$  __$$\     $$  __$$\ $$  __$$\ 
+⁠$$$$  _$$$$ |$$ |  $$ |$$ |  $$ |    $$$$$$$$ | \____$$\ $$ /  $$ |$$ |$$ /  $$ |$$$$$$$$ |$$ |  \__|    $$ /  $$ |$$ /  $$ |
+⁠$$$  / \$$$ |$$ |  $$ |$$ |  $$ |$$\ $$   ____|$$\   $$ |$$ |  $$ |$$ |$$ |  $$ |$$   ____|$$ |          $$ |  $$ |$$ |  $$ |
+⁠$$  /   \$$ |$$ |  $$ |$$ |  \$$$$  |\$$$$$$$\ \$$$$$$  |$$$$$$$  |$$ |\$$$$$$$ |\$$$$$$$\ $$ |      $$\ \$$$$$$$ |\$$$$$$$ |
+⁠\__/     \__|\__|  \__|\__|   \____/  \_______| \______/ $$  ____/ \__| \_______| \_______|\__|      \__| \____$$ | \____$$ |
+⁠                                                         $$ |                                            $$\   $$ |      $$ |
+⁠                                                         $$ |                                            \$$$$$$  |      $$ |
+⁠                                                         \__|                                             \______/       \__|
+	-->
+	<!--
+		Copyright 2022 ChromeHack Team
+		Licensed under the Apache License, Version 2.0 (the "License");
+		you may not use this file except in compliance with the License.
+		You may obtain a copy of the License at
+		http://www.apache.org/licenses/LICENSE-2.0
+		Unless required by applicable law or agreed to in writing, software
+		distributed under the License is distributed on an "AS IS" BASIS,
+		WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+		See the License for the specific language governing permissions and
+		limitations under the License.
+	-->
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<meta http-equiv="Referrer-Policy" content="no-referrer" />
+		<meta name="referrer" content="no-referrer" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<meta name="description" content="KnullVoid - Ultimate Sci-Fi Gaming Portal with HTML5, DOS, and Flash Games" />
+		<meta name="keywords" content="knullvoid,gaming,portal,sci-fi,games,html5,flash,dos,modern,gaming" />
+		<meta name="theme-color" content="#00ffff" />
+		<base href="/" />
+		<link rel="icon" type="image/x-icon" href="favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="standard.css" />
+		<link rel="apple-touch-icon" type="image/png" href="res/logo256.png" />
+		<link rel="manifest" type="application/json" href="manifest.json" />
+		<link rel="canonical" href="https://knullvoid.com/" />
+		<script type="text/javascript" src="lib/webalert.js" async="true"></script>
+		<script type="text/javascript" src="preloader.js" async="true"></script>
+		<title>KnullVoid - Sci-Fi Gaming Portal</title>
+		<style type="text/css">
+body {
+	background: #000000;
+	color: #ffffff;
+	font-family: 'Courier New', monospace;
+}
+#header {
+	position: absolute;
+	display: flex;
+	width: calc(100% - 10px);
+	height: 50px;
+	padding: 5px;
+	color: #00ffff;
+	background-color: #000000;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+}
+
+#logo {
+	position: relative;
+	display: block;
+	width: 200px;
+	height: 50px;
+	cursor: pointer;
+	font-size: 24px;
+	line-height: 50px;
+	color: #00ffff;
+	text-decoration: none;
+	text-align: center;
+}
+
+#navigation-bar {
+	position: relative;
+	display: flex;
+	width: fit-content;
+	height: fit-content;
+	margin-right: 10px;
+	column-gap: 10px;
+	flex-direction: row;
+	flex-wrap: nowrap;
+}
+
+#navigation-bar>* {
+	position: relative;
+	display: block;
+	width: fit-content;
+	height: 50px;
+	line-height: 50px;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 600;
+	text-decoration: none;
+}
+
+#navigation-bar>*:hover {
+	color: #a0a0a0;
+}
+
+#navigation-bar>*:active {
+	color: #808080;
+}
+
+#content {
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: calc(100% - 63px);
+	top: 60px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+#main {
+	position: relative;
+	display: none;
+	width: 100%;
+	height: fit-content;
+}
+
+#menu {
+	position: relative;
+	display: block;
+	width: 1000px;
+	height: fit-content;
+	margin: 150px auto;
+	padding: 30px;
+	border: 1px solid #00ffff;
+	border-radius: 10px;
+	background: #111111;
+	box-shadow: 10px 10px 10px #00ffff;
+}
+
+#menu input {
+	position: relative;
+	display: block;
+	width: 300px;
+	height: 20px;
+	padding: 10px;
+	margin: auto;
+	line-height: 20px;
+	font-size: 16px;
+	outline: none;
+	border: 1px solid #00ffff;
+	border-radius: 10px;
+	background: #222222;
+	color: #ffffff;
+}
+
+#menu input:focus {
+	border-color: #ff00ff;
+}
+
+#menu .button {
+	position: relative;
+	display: block;
+	width: fit-content;
+	height: fit-content;
+	margin: 10px 0px;
+	padding: 10px;
+	line-height: 20px;
+	font-size: 16px;
+	text-align: center;
+	cursor: pointer;
+	color: #000000;
+	background: #00ffff;
+	box-shadow: 2px 2px 2px #00ffff;
+	border: 1px solid #00ffff;
+	border-radius: 10px;
+}
+
+#menu .button:active {
+	box-shadow: -2px -2px 2px #00ffff;
+}
+
+#large-logo {
+	position: relative;
+	display: block;
+	width: 512px;
+	height: 128px;
+	margin: 10px auto;
+	font-size: 48px;
+	line-height: 128px;
+	color: #00ffff;
+	text-align: center;
+}
+
+@media all and (max-width: 1024px) {
+	#menu {
+		width: calc(90% - 62px);
+	}
+
+	#menu input {
+		width: calc(100% - 20px);
+	}
+
+	#large-logo {
+		width: 100%;
+		height: unset;
+		aspect-ratio: 4/1;
+	}
+}
+
+#description {
+	position: relative;
+	display: block;
+	width: fit-content;
+	height: fit-content;
+	margin: 10px auto 30px;
+	font-style: italic;
+	font-size: 16px;
+	line-height: 25px;
+	color: #00ffff;
+}
+
+.section {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: fit-content;
+	margin: 40px 0px;
+}
+
+.title {
+	position: relative;
+	display: block;
+	width: fit-content;
+	height: fit-content;
+	line-height: 32px;
+	font-size: 16px;
+	font-weight: 600;
+	color: #ffffff;
+}
+
+.text {
+	position: relative;
+	display: block;
+	width: fit-content;
+	height: fit-content;
+	margin: 10px 0px;
+	color: #cccccc;
+}
+
+#menu .expand {
+	position: absolute;
+	width: fit-content;
+	height: fit-content;
+	margin: 0px;
+	padding: 5px;
+	top: 0px;
+	right: 0px;
+	line-height: 14px;
+	font-size: 14px;
+}
+
+.game-grid {
+	position: relative;
+	display: flex;
+	width: 100%;
+	height: fit-content;
+	padding: 10px 0px;
+	flex-direction: row;
+	flex-wrap: wrap;
+	column-gap: 20px;
+	row-gap: 20px;
+	justify-content: center;
+}
+
+.game-grid::-webkit-scrollbar {
+	display: none;
+}
+
+.tab {
+	padding: 6px 14px;
+	border-radius: 999px;
+	border: 1px solid #00ffff;
+	background: rgba(0, 255, 255, 0.08);
+	color: #00ffff;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background 180ms ease, color 180ms ease;
+}
+
+.tab:hover {
+	background: rgba(0, 255, 255, 0.18);
+}
+
+.tab.active {
+	background: #00ffff;
+	color: #000000;
+}
+
+#controls {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	width: 100%;
+	padding: 10px 0px;
+	border-bottom: 1px solid rgba(0, 255, 255, 0.15);
+	margin-bottom: 20px;
+}
+
+#tabs {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	justify-content: center;
+	flex: 1;
+}
+
+#sort {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+#sort-select {
+	background: #111111;
+	color: #ffffff;
+	border: 1px solid #00ffff;
+	border-radius: 8px;
+	padding: 6px 10px;
+	font-weight: 600;
+}
+
+#sort-select option {
+	background: #111111;
+	color: #ffffff;
+}
+
+.game-item, .tool-item {
+	position: relative;
+	display: block;
+	width: 200px;
+	flex: 0 0 200px;
+	cursor: pointer;
+	border: 1px solid #00ffff;
+	border-radius: 10px;
+	box-shadow: 5px 5px 5px #00ffff;
+}
+
+.game-item:active, .tool-item:active {
+	border-color: #ff00ff;
+	box-shadow: 5px 5px 5px #ff00ff;
+}
+
+.game-item {
+	height: 200px;
+}
+
+.tool-item {
+	height: 150px;
+}
+
+.game-preview {
+	position: absolute;
+	display: block;
+	width: 200px;
+	height: 150px;
+	left: 0px;
+	top: 0px;
+	background-image: url("res/defprev.svg");
+	background-size: contain;
+	background-repeat: no-repeat;
+	border-radius: 10px;
+}
+
+.game-label, .tool-label {
+	position: absolute;
+	display: block;
+	width: 180px;
+	height: 30px;
+	left: 0px;
+	padding: 10px;
+	line-height: 15px;
+	text-align: center;
+	overflow: hidden;
+	overflow-wrap: break-word;
+	color: #ffffff;
+}
+
+.game-label {
+	top: 150px;
+}
+
+.tool-label {
+	top: 10px;
+}
+
+.game-badge {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	padding: 4px 10px;
+	border-radius: 999px;
+	background: rgba(0, 255, 255, 0.15);
+	color: #00ffff;
+	font-size: 12px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+.tool-desc {
+	position: absolute;
+	display: block;
+	width: 180px;
+	height: 90px;
+	left: 0px;
+	top: 50px;
+	color: #aaaaaa;
+	padding: 10px;
+	line-height: 18px;
+	overflow: hidden;
+	overflow-wrap: break-word;
+}
+
+.tool-desc a {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+#context-menu {
+	position: absolute;
+	display: none;
+	width: fit-content;
+	height: fit-content;
+	color: #323232;
+	background-color: #ffffff;
+	border: 1px solid #808080;
+}
+
+#context-menu div {
+	position: relative;
+	width: auto;
+	height: 14px;
+	padding: 10px;
+	cursor: pointer;
+	line-height: 14px;
+	font-size: 14px;
+	font-weight: 500;
+}
+
+#context-menu div:hover {
+	color: #ffffff;
+	background-color: #5a97f3;
+}
+
+#context-menu div:active {
+	color: #ffffff;
+	background-color: #317ae9;
+}
+
+#footer {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: fit-content;
+	margin: 100px 0px 15px;
+	color: #00ffff;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 20px;
+}
+
+#links {
+	position: relative;
+	display: flex;
+	width: 100%;
+	height: fit-content;
+	margin: 15px 0px;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-content: center;
+	justify-content: space-around;
+}
+
+#links>* {
+	position: relative;
+	display: block;
+	width: fit-content;
+	height: fit-content;
+}
+
+#links .title {
+	font-size: 14px;
+	line-height: 20px;
+}
+
+#links a {
+	position: relative;
+	display: block;
+	width: fit-content;
+	height: fit-content;
+	font-size: 12px;
+	line-height: 20px;
+	text-decoration: none;
+}
+
+#links a:hover {
+	text-decoration: underline;
+}
+
+#copyright {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: fit-content;
+	margin: 15px 0px;
+	text-align: center;
+}
+		</style>
+	</head>
+	<body>
+		<div id="header">
+			<a id="logo" href="#" title="KnullVoid - Sci-Fi Gaming Portal">KnullVoid</a>
+		</div>
+		<div id="content">
+			<div id="menu">
+				<noscript>
+					<div class="text">Please enable JavaScript and refresh this page to continue.</div>
+				</noscript>
+				<div id="loading" class="text">Loading...</div>
+				<div id="main">
+					<div id="large-logo">KnullVoid</div>
+					<div id="description">Welcome to KnullVoid - The Ultimate Sci-Fi Gaming Portal featuring HTML5, DOS, and Flash games in a futuristic interface</div>
+					<div id="controls">
+						<input id="search-bar" type="text" placeholder="Search Games" />
+						<div id="tabs">
+							<button class="tab active" data-type="all">All</button>
+							<button class="tab" data-type="html5">HTML5</button>
+							<button class="tab" data-type="flash">Flash</button>
+							<button class="tab" data-type="dos">DOS</button>
+						</div>
+						<div id="sort">
+							<label for="sort-select">Sort by:</label>
+							<select id="sort-select">
+								<option value="default">Popularity</option>
+								<option value="name-asc">Name (A–Z)</option>
+								<option value="name-desc">Name (Z–A)</option>
+							</select>
+						</div>
+					</div>
+					<div id="game-grid" class="game-grid"></div>
+					<div id="footer">
+						<div id="copyright">
+							<div>©2024 KnullVoid - Sci-Fi Gaming Portal</div>
+							<div>Experience the future of gaming.</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="context-menu">
+			<div id="clear-site-data">Clear site data</div>
+			<div id="clear-cache">Clear cache</div>
+		</div>
+	</body>
+</html>
